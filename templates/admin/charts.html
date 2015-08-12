@@ -1,0 +1,138 @@
+{% extends "admin/base.html" %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 main">
+      <h1 class="page-header">Charts <span class="subheader">Various Test Charts</span>
+        <!-- <a href="#" class="pull-right"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add a Car</button></a> -->
+      </h1>
+      <h2>Per Car</h2>
+      <div id="car1" style="min-width: 310px; height: 400px; max-width: 600px; "></div>
+      <h2>Overall</h2>
+      <div id="cars-vs-trucks" style="min-width: 310px; height: 400px; max-width: 600px; "></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<!-- Charting JS (highcharts.js) -->
+<script type="text/javascript" language="javascript" src="/static/js/highcharts.js"></script>
+<script type="text/javascript">
+  $(function () {
+      $('#car1').highcharts({
+          chart: {
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false,
+              type: 'pie'
+          },
+          title: {
+              text: 'Profit breakdown of 2001 Ford Cobra'
+          },
+          tooltip: {
+              pointFormat: '<b>${point.x:.2f}</b>'
+          },
+          credits: {
+              enabled: false
+          },
+          plotOptions: {
+              pie: {
+                  startAngle: 180,
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+                  dataLabels: {
+                      enabled: true,
+                      format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                      style: {
+                          color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                      }
+                  }
+              }
+          },
+          series: [{
+              name: "Profit",
+              colorByPoint: true,
+              data: [{
+                  name: "Purchase Price",
+                  y: (4580.00 / 7955.00) * 100,
+                  x: 4580.00
+              }, {
+                  name: "Expenses",
+                  y: (1880.41 / 7955.00) * 100,
+                  x: 1880.41
+              }, {
+                  name: "Expected Profit",
+                  y: (1494.59 / 7955.00) * 100,
+                  x: 1494.59
+              }]
+          }]
+      });
+
+      $('#cars-vs-trucks').highcharts({
+          chart: {
+              type: 'areaspline'
+          },
+          title: {
+              text: 'Average Days From Purchase to Sale'
+          },
+          legend: {
+              layout: 'vertical',
+              align: 'left',
+              verticalAlign: 'top',
+              x: 150,
+              y: 100,
+              floating: true,
+              borderWidth: 1,
+              backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+          },
+          xAxis: {
+              title: {
+                  text: '2015 to date'
+              },
+              categories: [
+                  'January',
+                  'Febuary',
+                  'March',
+                  'April',
+                  'May',
+                  'June'
+              ],
+              // plotBands: [{ // visualize the weekend
+              //     from: 4.5,
+              //     to: 6.5,
+              //     color: 'rgba(68, 170, 213, .2)'
+              // }]
+          },
+          yAxis: {
+              title: {
+                  text: 'Days Purchase to Sale'
+              }
+          },
+          tooltip: {
+              shared: true,
+              valueSuffix: ' Days'
+          },
+          credits: {
+              enabled: false
+          },
+          plotOptions: {
+              areaspline: {
+                  fillOpacity: 0.5
+              }
+          },
+          series: [{
+              name: 'Cars',
+              data: [34, 23, 11, 45, 38, 19]
+          }, {
+              name: 'Trucks',
+              data: [11, 19, 16, 12, 29, 14]
+          }]
+      });
+  });
+</script>
+{% endblock %}

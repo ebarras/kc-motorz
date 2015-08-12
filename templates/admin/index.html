@@ -1,0 +1,79 @@
+{% extends "admin/base.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 main">
+      <h1 class="page-header">Cars <span class="subheader">Cars Not Sold</span>
+        <!-- <a href="#" class="pull-right"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add a Car</button></a> -->
+      </h1>
+
+      <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>Picture</th>
+            <th>Year</th>
+            <th>Make</th>
+            <th>Model</th>                    
+            <th>Miles</th>
+            <th>Color</th>
+            <th>For Sale</th>
+            <th>Purchased Price</th>
+            <th>Expenses</th>
+            <th>Advertised Price</th>
+            <th>Expected Profit</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for car in cars %}
+          <tr>
+            <td>                  
+              <img class="db_thumb" src="http://kc-motorz.com/uploads/{{car.pictures.first().file_name}}">
+            </td>
+            <td>{{car.year}}</td>
+            <td>{{car.make}}</td>
+            <td>{{car.model}}</td>                    
+            <td>{{car.miles}}</td>
+            <td>{{car.color}}</td>
+
+            {% if car.is_for_sale %}
+              <td><span class="label label-success">Yes</span></td>
+            {% else %}
+              <td><span class="label label-danger">No</span></td>
+            {% endif %}
+            
+            <td>{{car.purchase_price}}</td>
+            <td>Needs Code</td> <!-- Expences go here. -->
+            <td>{{car.advertised_price}}</td>
+            <td>Needs Code</td> <!-- Expected Profit goes here. -->
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Options <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><span class="glyphicon glyphicon-edit green"></span> Edit Car</a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-share-alt green"></span> View Car on Site</a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-plus green"></span> Add Expenses</a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-remove red"></span> Delete Car</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<!-- Searchable Tables JS (datatables.js) -->
+    <script type="text/javascript" language="javascript" src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" language="javascript" src="/static/js/searchable-tables.js"></script>
+{% endblock %}

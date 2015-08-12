@@ -1,0 +1,87 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+.subheader{
+  font-size: .45em;
+  color: #9d9d9d;
+}
+
+/*
+ * Image Resizing
+*/
+.thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}
+
+.db_thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 0px 5px 0 0;
+}
+
+.medium_thumb {
+  height: 300px;
+    border: 1px solid #000;
+    margin: 10px 10px 10px 10px;
+}
+
+.small_thumb {
+  height: 150px;
+    border: 1px solid #000;
+    margin: 10px 10px 10px 10px;
+}
+
+/*
+ * Table Styling
+*/
+.table-responsive {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+}
+
+.dropdown-menu {
+  left: -50px;
+}
+
+/*
+ * Glyphicon Colors
+*/
+.glyphicon.green {
+  color: green;
+}
+.glyphicon.red {
+  color: red;
+}
