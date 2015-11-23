@@ -7,7 +7,6 @@ class Cars(db.Model):
 	make = db.Column(db.String(255), unique=False)
 	model = db.Column(db.String(255), unique=False)
 	year = db.Column(db.Integer, unique=False)
-	#picture = 
 	miles = db.Column(db.Integer, unique=False)
 	color = db.Column(db.String(255), unique=False)
 	is_for_sale  = db.Column(db.Integer, unique=False)
@@ -17,6 +16,7 @@ class Cars(db.Model):
 	pictures = db.relationship('Pictures', backref='cars', lazy='dynamic')
 	sale_date = db.Column(db.String(255), unique=False)
 	is_sold = db.Column(db.Integer, unique=False)
+	created_at = db.Column(db.DateTime, unique=False)
 
 	def __init__(self, id, make, model, year, miles, color, is_for_sale, purchase_price, advertised_price, deleted_at, sale_date, is_sold):
 	        self.id = id
@@ -31,6 +31,7 @@ class Cars(db.Model):
 	        self.deleted_at = deleted_at
 	        self.sale_date = sale_date
 	        self.is_sold = is_sold
+	        self.created_at = created_at
 
 	def __repr__(self):
 	    return '<Make {}'.format(self.make)
