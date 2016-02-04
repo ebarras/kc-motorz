@@ -1,0 +1,23 @@
+{% extends "admin/base.html" %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 main">
+      <h1 class="page-header">{{heading}} <span class="subheader">{{sub_heading}}</span></h1>
+      <ul>
+        <li>{{car.make}}</li>
+        <li>{{car.model}}</li>
+        <li>{{car.miles}}</li>
+        <li>{{car.color}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}

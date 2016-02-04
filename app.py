@@ -42,6 +42,16 @@ def admin_cars_sold():
 		)
 	return render_template('admin/cars.html', cars=cars, heading="Sold Cars", sub_heading="Cars That Have Been Sold")
 
+@app.route('/admin/car/<int:car_id>')
+def admin_car(car_id):
+	car = (db.session.query(Cars)
+	       .filter(Cars.id == car_id)
+	       .one()
+	    )
+	return render_template('admin/car.html', car=car, heading="Specific Car", sub_heading="This is a specific car")
+
+@app.route('/admin/car/add')
+
 @app.route('/admin/charts')
 def admin_charts():
     return render_template('admin/charts.html')
