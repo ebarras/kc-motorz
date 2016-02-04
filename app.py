@@ -1,5 +1,6 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, abort
 from flask.ext.sqlalchemy import SQLAlchemy
+from sqlalchemy.orm.exc import NoResultFound
 
 app = Flask(__name__)
 
@@ -44,13 +45,18 @@ def admin_cars_sold():
 
 @app.route('/admin/car/<int:car_id>')
 def admin_car(car_id):
-	car = (db.session.query(Cars)
-	       .filter(Cars.id == car_id)
-	       .one()
-	    )
-	return render_template('admin/car.html', car=car, heading="Specific Car", sub_heading="This is a specific car")
+	try:
+		car = (db.session.query(Cars)
+				.filter(Cars.id == car_id)
+				.one()
+			)
+	except NoResultFound:
+		abort(404)
+	return render_template('admin/car.html', car=car, heading='Edit Car', sub_heading=str(car.year) + ' ' + car.make + ' ' + car.model)
 
 @app.route('/admin/car/add')
+def admin_car_add():
+	return render_template('admin/car_add.html', heading="New Car", sub_heading="Add a new car to the system.")
 
 @app.route('/admin/charts')
 def admin_charts():

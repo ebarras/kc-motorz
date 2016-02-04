@@ -1,0 +1,144 @@
+{% extends "admin/base.html" %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 main">
+      <h1 class="page-header">{{heading}} <span class="subheader">{{sub_heading}}</span></h1>
+      <p>This is where you add a car. Use lots of the HTML from the old car add page. Try to add in a dropzone somewhere for pictures. This is no good until you can see previews and rearrange. That shit is hard though. See if HTML5 has a builtin or something.</p>
+
+      <p>--- OLD CODE UNDER HERE ---</p>
+      <form action="#" method="post" role="form" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="year">Year</label>
+            <input type="text" class="form-control" name="year" />
+        </div>
+        <div class="form-group">
+            <label for="make">Make</label>
+            <input type="text" class="form-control" name="make" />
+        </div>
+        <div class="form-group">
+            <label for="model">Model</label>
+            <input type="text" class="form-control" name="model" />
+        </div>
+        <div class="form-group">
+            <label for="miles">Miles</label>
+            <input type="text" class="form-control" name="miles" />
+        </div>
+        <div class="form-group">
+            <label for="color">Color</label>
+            <select class="form-control" name="color">
+        <option>White</option>
+        <option>Black</option>
+        <option>Blue</option>
+        <option>Silver</option>
+        <option>Grey</option>
+        <option>Red</option>
+        <option>Green</option>
+        <option>Maroon</option>
+        <option>Gold</option>
+        <option>Yellow</option>
+        <option>Brown</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="transmission">Transmission</label>
+            <select class="form-control" name="transmission">
+                <option>Automatic</option>
+                <option>5 Speed Manual</option>
+                <option>6 Speed Manual</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="engine">Engine</label>
+            <input type="text" class="form-control" name="engine" />
+        </div>
+        <div class="form-group">
+            <label for="drive_train">Drive Train</label>
+            <select class="form-control" name="drive_train">
+                <option>Rear Wheel Drive</option>
+                <option>Front Wheel Drive</option>
+                <option>4 Wheel Drive</option>
+                <option>All Wheel Drive</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="fuel_type">Fuel Type</label>
+            <select class="form-control" name="fuel_type">
+                <option>Diesel</option>
+                <option>Gas</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="title_status">Title Status</label>
+            <select class="form-control" name="title_status">
+                <option>Clean</option>
+                <option>Salvage</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="vin">VIN</label>
+            <input type="text" class="form-control" name="vin" />
+        </div>
+        <div class="form-group">
+            <label for="description">Description (Additional Options)</label>
+            <textarea class="form-control" name="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="purchase_price">Purchase Price</label>
+            <input type="text" class="form-control" name="purchase_price" />
+        </div>
+        <div class="form-group">
+            <label for="purchase_date">Purchase Date</label>
+            <input type="date" class="form-control" name="purchase_date" />
+        </div>
+        <div class="form-group">
+            <label for="advertised_price">Advertised Price</label>
+            <input type="text" class="form-control" name="advertised_price" />
+        </div>
+        <div class="form-group">
+            <label for="advertised_date">Advertised Date</label>
+            <input type="date" class="form-control" name="advertised_date" />
+        </div>
+        <div class="checkbox">
+            <label for="is_for_sale">
+                <input type="checkbox" name="is_for_sale" /> Is this car for sale?
+            </label>
+        </div>
+        <div class="checkbox">
+            <label for="is_sold">
+                <input type="checkbox" name="is_sold" /> Has this car been sold?
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="sale_price">Sale Price</label>
+            <input type="text" class="form-control" name="sale_price" />
+        </div>
+        <div class="form-group">
+            <label for="sale_date">Sold Date</label>
+            <input type="date" class="form-control" name="sold_date" />
+        </div>
+
+        <div class="form-group">
+            <label for="pictures">Pictures</label>
+            <input type="file" id="pictures" name="pictures[]" multiple />
+        </div>
+
+        <div>
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a href="http://816diesel.com/admin/cars" class="btn btn-link">Cancel</a>
+        </div>
+
+      </form>
+
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
